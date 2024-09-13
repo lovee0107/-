@@ -1,0 +1,280 @@
+@import "./reset.css";
+
+@font-face {
+    src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
+        format("woff2");
+    font-family: "Meta";
+    font-style: normal;
+    font-weight: normal;
+    }
+
+@property --hue {
+    initial-value: 0;
+    syntax: '<number>';
+    inherits: false;
+}
+
+@property --eval {
+    initial-value: 0;
+    syntax: '<number>';
+    inherits: false;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: visible;
+    transition: background-image 3s ease;
+    animation: rotate 30s linear infinite, eval 40s ease-in-out infinite;
+    background-image: 
+    radial-gradient(farthest-corner at 0% calc(var(--eval) * 100%), hsla(calc(var(--hue) * 360deg), 70%, 90%, 1), hsla(calc(var(--hue) * 360deg), 70%, 90%, 0) 80%),
+    radial-gradient(farthest-corner at calc(var(--eval) * 100%) 100%, hsla(calc((var(--hue) + 0.15) * 360deg), 65%, 92%, 1), hsla(calc((var(--hue) + 0.2) * 360deg), 65%, 92%, 0) 110%);
+  
+}
+
+
+
+.grid-container {
+    width: 100%;
+    height : 100%;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(8,1fr);
+}
+
+
+#convertButton{
+    display:none;
+    grid-column: 6 / 8;
+    grid-row : 2 / 3;
+}
+
+#timer {
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: 100px;
+    left: 250px;
+    font-size: 100px;
+    text-align: center;
+    margin: 10px 0;
+    display: block;
+
+}
+
+#progress {
+    font-size: 100px;
+    text-align: center;
+    margin: 10px 0;
+    display : block;
+    grid-column: 7 / 8;
+    grid-row: 2/3; 
+
+}
+#camera_div{
+    width: 100%;
+    height: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3 / 7;
+    grid-row: 1 / 9; 
+}
+#camera {
+    width: 85%;
+    height: auto;
+    display: none;
+}
+#photos {
+    display: flex;
+    flex-wrap: wrap;
+}
+.photo {
+    width: 15px;
+    height: 75px;
+    margin: 5px;
+}
+
+
+#start-button {
+    display: none;
+    width : 100%;
+    grid-column: 3 / 7;
+    grid-row: 7 / 8;
+    z-index: 5; 
+
+    transition: all 0.5s;
+    -webkit-text-stroke: 2px #d6f4f4;
+    font-variation-settings: "wght" 900, "ital" 1;
+    font-size: 3rem;
+    text-align: center;
+    color: transparent;
+    font-family: "Meta", sans-serif;
+    text-shadow: 5px 5px 0px #07bccc,
+                10px 10px 0px #e601c0,
+                13px 13px 0px #e9019a,
+                17px 17px 0px #f40468,
+                36px 36px 7px #482896;
+    cursor: pointer;
+    }
+    
+#start-button:hover {
+    font-variation-settings: "wght" 100, "ital" 0;
+    text-shadow: none;
+}
+    
+
+
+
+
+
+.div_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas_grid{
+    grid-column: 2 / 6;
+    grid-row: 1 / 9; 
+}
+
+#canvas {
+    border: 1px solid black;
+    display: none;
+
+}
+
+.qr_grid{
+    grid-column: 6 / 8;
+    grid-row: 3 / 7; 
+
+}
+#imageUrl{
+    display:none;
+}
+
+#frame-selection {
+    display: flex;
+    justify-content: center;
+    grid-column:  6 / 8;
+    grid-row: 7 / 8;
+}
+
+.frame-button {
+    display : none;
+    margin: 0 10px;
+    cursor: pointer;
+    width: 100px; /* 썸네일 너비 설정 */
+    height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
+}
+
+.letter {
+    position: absolute;
+    font-size: 24px;
+    color: #000;
+    pointer-events: none;
+    transition: transform 0.05s ease-out;
+    z-index: 1000;
+}
+
+#start{
+
+    background-image: url('../초기화면.jpg');
+    background-size: cover; /* 부모 요소에 맞게 이미지 크기를 조정 */
+    background-position: center;
+    grid-column: 1/9;
+    grid-row: 1/9;
+    z-index: 100;
+}
+
+
+
+
+#start {
+    --box-width: 96rem;
+    --box-height: 54rem;
+    background-size: cover; /* 부모 요소에 맞게 이미지 크기를 조정 */
+    background-position: center;
+    --frag-width: calc(var(--box-width) / var(--col));
+    --frag-height: calc(var(--box-height) / var(--row));
+    --img-url: url('../카메라권한.png');
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: var(--box-width);
+    height: var(--box-height);
+    position: relative;
+
+  }
+  
+
+  
+  .fragment {
+    --x-offset: calc(var(--x) * var(--frag-width) * -1);
+    --y-offset: calc(var(--y) * var(--frag-height) * -1);
+    --rotateX: rotateX(0);
+    --rotateY: rotateY(0);
+    width: var(--frag-width);
+    height: var(--frag-height);
+    background: var(--img-url) var(--x-offset) var(--y-offset) / var(--box-width) var(--box-height) no-repeat;
+    backface-visibility: hidden;
+    will-change: transform;
+    transform: var(--rotateX) var(--rotateY) scale(0.8);
+    animation: flip var(--duration) linear var(--delay) forwards;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @keyframes flip {
+    0% { transform: var(--rotateX) var(--rotateY) scale(0.8); opacity: 0; }
+    70% { transform: rotateX(0) rotateY(0) scale(0.8); opacity: 1; }
+    100% { transform: rotateX(0) rotateY(0) scale(1); }
+  }
+  
+
+
+  @keyframes rotate {
+    from { --hue: 0; }
+    to { --hue: 1; }
+}
+
+@keyframes eval {
+    0% { --eval: 0; }
+    50% { --eval: 1; }
+    100% { --eval: 0; }
+}

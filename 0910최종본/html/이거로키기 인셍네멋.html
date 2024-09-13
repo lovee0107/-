@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
+    <title>거의완성작0909</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="grid-container">
+        <div id="start" data-i= "2"></div>
+        <div id="camera_div"><video id="camera" autoplay playsinline></video></div>
+        <div id="timer">5</div>
+        <div id="progress">0/4</div> <!-- Progress display -->
+        <span id="start-button">START</span>
+        <div id="photos"></div>
+        <div class="div_center canvas_grid" >
+            <canvas id="canvas" width="500" height="750"></canvas>
+        </div>
+        <button class="button button--moema button--text-thick button--text-upper button--size-s"
+            id="convertButton">QR코드로 받기</button>
+        <p id="imageUrl"></p>
+        <div class="div_center qr_grid">
+            <div id="qrcode"></div>
+        </div>
+        <div id="frame-selection">
+            <div id="frame-box">
+                <img src="../포뇨친구프레임.png" class="frame-button" id="frame1" alt="Frame 1">
+                <img src="../사계어벤져스.png" class="frame-button" id="frame2" alt="Frame 2">
+                <img src="../토마토프레임.jpg" class="frame-button" id="frame3" alt="Frame 3">
+                <img src="../버블버블프레임.png" class="frame-button" id="frame4" alt="Frame 4">
+                <img src="../토토로프레임.png" class="frame-button" id="frame5" alt="Frame 5">
+                <img src="../햄토리프레임.png" class="frame-button" id="frame6" alt="Frame 6">
+                <img src="../롤라프레임.png" class="frame-button" id="frame7" alt="Frame 7">
+            </div>
+        </div>
+        <div id="loading">
+            <div class="wrapper">
+                <div class="box-wrap">
+                    <div class="box one"></div>
+                    <div class="box two"></div>
+                    <div class="box three"></div>
+                    <div class="box four"></div>
+                    <div class="box five"></div>
+                    <div class="box six"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="../js/camera.js"></script>
+</body>
+</html>
